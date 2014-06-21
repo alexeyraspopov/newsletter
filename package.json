@@ -1,8 +1,15 @@
 {
   "name": "newsletter",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "index.js",
-  "author": "Alexey Raspopov (https://github.com/alexeyraspopov)"
+  "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
+  "devDependencies": {
+    "jshint-stylish": "^0.2.0",
+    "gulp-jasmine": "^0.2.0",
+    "gulp-complexity": "^0.2.1",
+    "gulp-jshint": "^1.6.3",
+    "gulp": "^3.8.1"
+  }
 }

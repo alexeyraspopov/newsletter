@@ -1,8 +1,11 @@
 {
   "name": "newsletter",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
   "author": "Alexey Raspopov (https://github.com/alexeyraspopov)"
 }
