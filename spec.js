@@ -21,6 +21,14 @@ describe('subscription', function(){
 		expect(subscriber.method).toHaveBeenCalledWith(value);
 	});
 
+	it('should publish first publication', function(){
+		subscription = newsletter(value);
+
+		subscription.subscribe(subscriber.method, true);
+
+		expect(subscriber.method).toHaveBeenCalledWith(value);
+	});
+
 	it('should return unsubcribe function', function(){
 		var unsubcribe = subscription.subscribe(subscriber.method);
 
@@ -37,7 +45,6 @@ describe('subscription', function(){
 
 		subscription.subscribe(inc);
 		subscription.subscribe(inc);
-
 		subscription.publish(value);
 
 		expect(counter).toBe(1);
