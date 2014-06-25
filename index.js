@@ -12,17 +12,13 @@ function unsubscribe(subscribers, callback){
 
 function noop(){}
 
-module.exports = function(firstPublication){
+module.exports = function(){
 	var subscribers = [];
 
 	return {
-		subscribe: function(callback, immediateCall){
+		subscribe: function(callback){
 			if(subscribers.indexOf(callback) < 0){
 				subscribers.unshift(callback);
-
-				if(immediateCall){
-					callback(firstPublication);
-				}
 
 				return unsubscribe(subscribers, callback);
 			}
