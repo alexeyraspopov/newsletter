@@ -1,6 +1,6 @@
 {
   "name": "newsletter",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "index.js",
