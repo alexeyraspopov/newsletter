@@ -20,8 +20,9 @@ $ bower install newsletter
 
 To create publisher instance call factory function (see Usage). Instance implements next interface (similar to Observer):
 
- * `publish` - invokes all subscribers and pass some received data to them
- * `subscribe` - adds new subscriber (function) and returns "unsubscribe" function
+ * `publish` - invokes all listeners and pass some received data to them
+ * `subscribe` - adds new listener (function) and returns "unsubscribe" function
+ * `unsubscribe` - removes previously added listener
 
 ## Usage
 
@@ -37,6 +38,26 @@ signal.subscribe((data) => console.log(data));
 
 // publish some data to subscribers
 signal.publish(13);
+```
+
+There are two ways to remove listeners
+
+```javascript
+// add listener and get "unsubscribe" function
+var unsubscribe = signal.subscribe(function(){ ... });
+
+// remove listener
+unsubscribe();
+```
+
+```javascript
+var listener = function(){ ... };
+
+// add listener
+signal.subscribe(listener);
+
+// remove listener
+signal.unsubscribe(listener);
 ```
 
 ## License
