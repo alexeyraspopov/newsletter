@@ -18,7 +18,7 @@ $ bower install newsletter
 
 ## API
 
-To create publisher instance invoke factory (see Usage). Instance implement next interface (similar to Observer):
+To create publisher instance call factory function (see Usage). Instance implements next interface (similar to Observer):
 
  * `publish` - invokes all subscribers and pass some received data to them
  * `subscribe` - adds new subscriber (function) and returns "unsubscribe" function
