@@ -4,6 +4,13 @@
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "index.js",
+  "moduleType": [
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexeyraspopov/newsletter.git"
+  },
   "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
   "ignore": [
     "*",

@@ -4,6 +4,7 @@
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "index.js",
+  "repository": "alexeyraspopov/newsletter",
   "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
   "devDependencies": {
     "jshint-stylish": "^0.2.0",

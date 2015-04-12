@@ -4,6 +4,7 @@
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "index.js",
+  "repo": "alexeyraspopov/newsletter",
   "scripts": [
     "index.js"
   ],
