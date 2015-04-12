@@ -32,6 +32,15 @@ describe('subscription', function(){
 		expect(subscriber.method).not.toHaveBeenCalled();
 	});
 
+	it('should remove callback', function(){
+		subscription.subscribe(subscriber.method);
+		subscription.unsubscribe(subscriber.method);
+
+		subscription.publish(value);
+
+		expect(subscriber.method).not.toHaveBeenCalled();
+	});
+
 	it('should add callback only once', function(){
 		var counter = 0, inc = function(){ counter++; };
 
