@@ -7,10 +7,10 @@
   "repository": "alexeyraspopov/newsletter",
   "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
   "devDependencies": {
-    "jshint-stylish": "^0.2.0",
-    "gulp-jasmine": "^0.2.0",
+    "gulp": "^3.8.1",
     "gulp-complexity": "^0.2.1",
+    "gulp-jasmine": "^2.0.1",
     "gulp-jshint": "^1.6.3",
-    "gulp": "^3.8.1"
+    "jshint-stylish": "^0.2.0"
   }
 }
