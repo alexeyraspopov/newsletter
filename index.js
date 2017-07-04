@@ -39,7 +39,5 @@ function subscribe(subscribers, callback) {
 		return function() { unsubscribe(subscribers, callback); };
 	}
 
-	return noop;
+	return Function.prototype;
 }
-
-function noop() {}
