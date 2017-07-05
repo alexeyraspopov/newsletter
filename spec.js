@@ -1,13 +1,13 @@
 /* global describe, it, beforeEach, expect, spyOn */
 'use strict';
 
-var newsletter = require('./index');
+var Newsletter = require('./index');
 
 describe('subscription', function() {
 	var subscription, value, subscriber;
 
 	beforeEach(function() {
-		subscription = newsletter();
+		subscription = new Newsletter();
 		value = 13;
 		subscriber = { method: function() {} };
 

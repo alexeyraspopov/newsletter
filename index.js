@@ -1,43 +1,22 @@
-'use strict';
+class Newsletter {
+	constructor() {
+		this.subscribers = new Set();
+	}
 
-module.exports = function newsletter() {
-	var subscribers = [];
+	subscribe(callback) {
+		this.subscribers.add(callback);
+		return () => this.unsubscribe(callback);
+	}
 
-	return {
-		subscribe: function(callback) {
-			return subscribe(subscribers, callback);
-		},
-		unsubscribe: function(callback) {
-			unsubscribe(subscribers, callback);
-		},
-		publish: function(data) {
-			publish(subscribers, data);
+	unsubscribe(callback) {
+		this.subscribers.delete(callback);
+	}
+
+	publish(data) {
+		for(const subscriber of this.subscribers) {
+			subscriber(data);
 		}
-	};
-};
-
-function unsubscribe(subscribers, callback) {
-	var index = subscribers.indexOf(callback);
-
-	if (index > -1) {
-		subscribers.splice(index, 1);
 	}
 }
 
-function publish(subscribers, data) {
-	var index = subscribers.length;
-
-	while (--index >= 0) {
-		subscribers[index](data);
-	}
-}
-
-function subscribe(subscribers, callback) {
-	if (subscribers.indexOf(callback) < 0) {
-		subscribers.unshift(callback);
-
-		return function() { unsubscribe(subscribers, callback); };
-	}
-
-	return Function.prototype;
-}
+module.exports = Newsletter;
