@@ -7,15 +7,14 @@
   "repository": "alexeyraspopov/newsletter",
   "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
   "keywords": [
-  	"pubsub",
-  	"observer",
-  	"events"
-  ],
+		"pubsub",
+		"observer",
+		"events"
+	],
   "devDependencies": {
-    "gulp": "^3.8.1",
-    "gulp-complexity": "^0.2.1",
-    "gulp-jasmine": "^2.0.1",
-    "gulp-jshint": "^1.6.3",
-    "jshint-stylish": "^0.2.0"
+    "jest": "~20.0.4"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
