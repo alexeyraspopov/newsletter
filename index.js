@@ -13,7 +13,7 @@ class Newsletter {
 	}
 
 	publish(data) {
-		for(const subscriber of this.subscribers) {
+		for (const subscriber of this.subscribers) {
 			subscriber(data);
 		}
 	}
