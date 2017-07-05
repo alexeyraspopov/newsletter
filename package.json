@@ -3,18 +3,33 @@
   "version": "1.0.0",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
-  "main": "index.js",
+  "main": "newsletter.js",
+  "module": "index.js",
   "repository": "alexeyraspopov/newsletter",
   "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
   "keywords": [
-		"pubsub",
-		"observer",
-		"events"
-	],
+    "pubsub",
+    "observer",
+    "events"
+  ],
   "devDependencies": {
-    "jest": "~20.0.4"
+    "babel-core": "~6.25.0",
+    "babel-jest": "~20.0.3",
+    "babel-plugin-transform-es2015-arrow-functions": "~6.22.0",
+    "babel-plugin-transform-es2015-classes": "~6.24.1",
+    "babel-plugin-transform-es2015-for-of": "~6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "~6.24.1",
+    "jest": "~20.0.4",
+    "rollup": "~0.43.0",
+    "rollup-plugin-babel": "~2.7.1"
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "rollup --format cjs --config rollup.config.js index.js > newsletter.js"
   }
 }
