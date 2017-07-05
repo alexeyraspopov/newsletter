@@ -20,7 +20,7 @@ To create publisher instance use `Newsletter` constructor (see Usage). Instance 
 
 ```javascript
 // get newsletter
-var Newsletter = require('newsletter');
+import Newsletter from 'newsletter';
 
 // create instance
 var signal = new Newsletter();
@@ -36,14 +36,14 @@ There are two ways to remove listeners
 
 ```javascript
 // add listener and get "unsubscribe" function
-var unsubscribe = signal.subscribe(function(){ ... });
+var unsubscribe = signal.subscribe(() => ...);
 
 // remove listener
 unsubscribe();
 ```
 
 ```javascript
-var listener = function(){ ... };
+function listener() { ... }
 
 // add listener
 signal.subscribe(listener);

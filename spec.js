@@ -1,6 +1,6 @@
-var Newsletter = require('./index');
+import Newsletter from './index';
 
-describe('subscription', function() {
+describe('Newsletter', function() {
   var subscription, value, subscriber;
 
   beforeEach(function() {

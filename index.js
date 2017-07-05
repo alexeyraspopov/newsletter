@@ -1,4 +1,4 @@
-class Newsletter {
+export default class Newsletter {
   constructor() {
     this.subscribers = new Set();
   }
@@ -18,5 +18,3 @@ class Newsletter {
     }
   }
 }
-
-module.exports = Newsletter;
