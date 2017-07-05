@@ -1,53 +1,50 @@
-/* global describe, it, beforeEach, expect, spyOn */
-'use strict';
-
 var Newsletter = require('./index');
 
 describe('subscription', function() {
-	var subscription, value, subscriber;
+  var subscription, value, subscriber;
 
-	beforeEach(function() {
-		subscription = new Newsletter();
-		value = 13;
-		subscriber = { method: function() {} };
+  beforeEach(function() {
+    subscription = new Newsletter();
+    value = 13;
+    subscriber = { method: function() {} };
 
-		spyOn(subscriber, 'method');
-	});
+    spyOn(subscriber, 'method');
+  });
 
-	it('should publish value', function() {
-		subscription.subscribe(subscriber.method);
-		subscription.publish(value);
+  it('should publish value', function() {
+    subscription.subscribe(subscriber.method);
+    subscription.publish(value);
 
-		expect(subscriber.method).toHaveBeenCalledWith(value);
-	});
+    expect(subscriber.method).toHaveBeenCalledWith(value);
+  });
 
-	it('should return unsubcribe function',  function() {
-		var unsubcribe = subscription.subscribe(subscriber.method);
+  it('should return unsubcribe function',  function() {
+    var unsubcribe = subscription.subscribe(subscriber.method);
 
-		expect(typeof unsubcribe).toBe('function') ;
+    expect(typeof unsubcribe).toBe('function') ;
 
-		unsubcribe();
-		subscription.publish(value);
+    unsubcribe();
+    subscription.publish(value);
 
-		expect(subscriber.method).not.toHaveBeenCalled();
-	});
+    expect(subscriber.method).not.toHaveBeenCalled();
+  });
 
-	it('should remove callback', function() {
-		subscription.subscribe(subscriber.method);
-		subscription.unsubscribe(subscriber.method);
+  it('should remove callback', function() {
+    subscription.subscribe(subscriber.method);
+    subscription.unsubscribe(subscriber.method);
 
-		subscription.publish(value);
+    subscription.publish(value);
 
-		expect(subscriber.method).not.toHaveBeenCalled();
-	});
+    expect(subscriber.method).not.toHaveBeenCalled();
+  });
 
-	it('should add callback only once', function() {
-		var counter = 0, inc = function() { counter++; };
+  it('should add callback only once', function() {
+    var counter = 0, inc = function() { counter++; };
 
-		subscription.subscribe(inc);
-		subscription.subscribe(inc);
-		subscription.publish(value);
+    subscription.subscribe(inc);
+    subscription.subscribe(inc);
+    subscription.publish(value);
 
-		expect(counter).toBe(1);
-	});
+    expect(counter).toBe(1);
+  });
 });

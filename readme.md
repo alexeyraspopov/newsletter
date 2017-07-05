@@ -8,17 +8,9 @@ Simple pub/sub implementation.
 $ npm install newsletter
 ```
 
-```bash
-$ component install alexeyraspopov/newsletter
-```
-
-```bash
-$ bower install newsletter
-```
-
 ## API
 
-To create publisher instance call factory function (see Usage). Instance implements next interface (similar to Observer):
+To create publisher instance use `Newsletter` constructor (see Usage). Instance implements next interface:
 
  * `publish` - invokes all listeners and pass some received data to them
  * `subscribe` - adds new listener (function) and returns "unsubscribe" function
