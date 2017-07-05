@@ -28,10 +28,10 @@ To create publisher instance call factory function (see Usage). Instance impleme
 
 ```javascript
 // get newsletter
-var newsletter = require('newsletter');
+var Newsletter = require('newsletter');
 
 // create instance
-var signal = newsletter();
+var signal = new Newsletter();
 
 // subscribe notifications
 signal.subscribe((data) => console.log(data));
