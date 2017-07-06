@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "newsletter.js",
   "module": "index.js",
+  "types": "typings/newsletter.d.ts",
   "repository": "alexeyraspopov/newsletter",
   "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
   "keywords": [
