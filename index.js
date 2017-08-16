@@ -14,8 +14,7 @@ export default class Newsletter {
       this.unsubscribe(wrapper);
     };
 
-    this.subscribers.add(wrapper);
-    return () => this.unsubscribe(wrapper);
+    return this.subscribe(wrapper);
   }
 
   unsubscribe(callback) {
