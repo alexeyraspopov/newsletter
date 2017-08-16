@@ -8,6 +8,16 @@ export default class Newsletter {
     return () => this.unsubscribe(callback);
   }
 
+  subscribeOnce(callback) {
+    const wrapper = (data) => {
+      callback(data);
+      this.unsubscribe(wrapper);
+    };
+
+    this.subscribers.add(wrapper);
+    return () => this.unsubscribe(wrapper);
+  }
+
   unsubscribe(callback) {
     this.subscribers.delete(callback);
   }
