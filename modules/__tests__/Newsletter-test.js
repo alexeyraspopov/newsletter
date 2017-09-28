@@ -1,4 +1,4 @@
-import Newsletter from './index';
+import Newsletter from '../Newsletter';
 
 describe('Newsletter', function() {
   var subscription, value, subscriber;
