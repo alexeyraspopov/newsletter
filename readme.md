@@ -52,6 +52,21 @@ signal.subscribe(listener);
 signal.unsubscribe(listener);
 ```
 
+There is a way to subscribe to a single update
+
+```javascript
+var signal = new Newsletter();
+
+// subscribe to a single update
+signal.subscribe((data) => console.log(data), { once: true });
+
+// will call a listener and remove it
+signal.publish(13);
+
+// no listeners called
+signal.publish(14);
+```
+
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License) (c) Alexey Raspopov
