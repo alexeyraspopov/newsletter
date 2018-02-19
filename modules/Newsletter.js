@@ -3,8 +3,16 @@ export default class Newsletter {
     this.subscribers = new Set();
   }
 
-  subscribe(callback) {
+  subscribe(callback, options = { once: false }) {
     this.subscribers.add(callback);
+
+    if (options.once) {
+      let hook = this.subscribers.add(() => {
+        this.unsubscribe(callback);
+        this.unsubscribe(hook);
+      });
+    }
+
     return () => this.unsubscribe(callback);
   }
 

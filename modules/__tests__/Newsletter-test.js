@@ -47,4 +47,24 @@ describe('Newsletter', function() {
 
     expect(counter).toBe(1);
   });
+
+  it('should call a callback only once', function() {
+    var counter = 0, inc = function() { counter++; };
+
+    subscription.subscribe(inc, { once: true });
+    subscription.publish(value);
+    subscription.publish(value);
+
+    expect(counter).toBe(1);
+  });
+
+  it('should call a callback more than once', function() {
+    var counter = 0, inc = function() { counter++; };
+
+    subscription.subscribe(inc, { once: false });
+    subscription.publish(value);
+    subscription.publish(value);
+
+    expect(counter).toBe(2);
+  });
 });
