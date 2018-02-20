@@ -67,6 +67,4 @@ signal.publish(13);
 signal.publish(14);
 ```
 
-## License
-
-[MIT License](http://en.wikipedia.org/wiki/MIT_License) (c) Alexey Raspopov
+The project is licensed under the [MIT](https://github.com/alexeyraspopov/dataclass/blob/master/LICENSE) license.
