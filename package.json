@@ -33,9 +33,7 @@
   },
   "scripts": {
     "test": "jest",
-    "buildmodulecjs": "rollup --format cjs --config rollup.config.js modules/Newsletter.js > newsletter.js",
-    "buildmodulees": "rollup --format es --config rollup.config.js modules/Newsletter.js > newsletter.module.js",
-    "buildtypes": "cp typings/newsletter.js.flow newsletter.js.flow",
-    "prepublish": "npm run buildmodulecjs && npm run buildmodulees && npm run buildtypes"
+    "build": "./scripts/build.sh",
+    "prepublish": "npm run build"
   }
 }
