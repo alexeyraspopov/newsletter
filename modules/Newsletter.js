@@ -21,7 +21,7 @@ export default class Newsletter {
   }
 
   publish(data) {
-    for (const subscriber of this.subscribers) {
+    for (let subscriber of this.subscribers) {
       subscriber(data);
     }
   }

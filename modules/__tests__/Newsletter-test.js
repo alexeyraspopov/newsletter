@@ -1,70 +1,69 @@
 import Newsletter from '../Newsletter';
 
-describe('Newsletter', function() {
-  var subscription, value, subscriber;
+function createContext() {
+  let signal = new Newsletter();
+  let value = 13;
+  let listener = jest.fn();
+  return { signal, value, listener };
+}
 
-  beforeEach(function() {
-    subscription = new Newsletter();
-    value = 13;
-    subscriber = { method: function() {} };
+describe('Newsletter', () => {
+  it('should publish value', () => {
+    let { signal, value, listener } = createContext();
 
-    spyOn(subscriber, 'method');
+    signal.subscribe(listener);
+    signal.publish(value);
+
+    expect(listener).toHaveBeenCalledWith(value);
   });
 
-  it('should publish value', function() {
-    subscription.subscribe(subscriber.method);
-    subscription.publish(value);
+  it('should return unsubcribe function', () => {
+    let { signal, value, listener } = createContext();
 
-    expect(subscriber.method).toHaveBeenCalledWith(value);
-  });
-
-  it('should return unsubcribe function',  function() {
-    var unsubcribe = subscription.subscribe(subscriber.method);
-
-    expect(typeof unsubcribe).toBe('function') ;
-
+    let unsubcribe = signal.subscribe(listener);
     unsubcribe();
-    subscription.publish(value);
+    signal.publish(value);
 
-    expect(subscriber.method).not.toHaveBeenCalled();
+    expect(listener).not.toHaveBeenCalled();
   });
 
-  it('should remove callback', function() {
-    subscription.subscribe(subscriber.method);
-    subscription.unsubscribe(subscriber.method);
+  it('should remove callback', () => {
+    let { signal, value, listener } = createContext();
 
-    subscription.publish(value);
+    signal.subscribe(listener);
+    signal.unsubscribe(listener);
+    signal.publish(value);
 
-    expect(subscriber.method).not.toHaveBeenCalled();
+    expect(listener).not.toHaveBeenCalled();
   });
 
-  it('should add callback only once', function() {
-    var counter = 0, inc = function() { counter++; };
+  it('should add callback only once', () => {
+    let { signal, value, listener } = createContext();
 
-    subscription.subscribe(inc);
-    subscription.subscribe(inc);
-    subscription.publish(value);
+    signal.subscribe(listener);
+    signal.subscribe(listener);
+    signal.publish(value);
 
-    expect(counter).toBe(1);
+    expect(listener.mock.calls.length).toBe(1);
   });
 
-  it('should call a callback only once', function() {
-    var counter = 0, inc = function() { counter++; };
+  it('should call a callback only once', () => {
+    let { signal, value, listener } = createContext();
 
-    subscription.subscribe(inc, { once: true });
-    subscription.publish(value);
-    subscription.publish(value);
+    signal.subscribe(listener, { once: true });
+    signal.publish(value);
+    signal.publish(value);
 
-    expect(counter).toBe(1);
+    expect(listener.mock.calls.length).toBe(1);
   });
 
-  it('should call a callback more than once', function() {
-    var counter = 0, inc = function() { counter++; };
+  it('should call a callback more than once', () => {
+    let { signal, value, listener } = createContext();
 
-    subscription.subscribe(inc, { once: false });
-    subscription.publish(value);
-    subscription.publish(value);
+    signal.subscribe(listener, { once: false });
+    signal.publish(value);
+    signal.publish(value);
 
-    expect(counter).toBe(2);
+    expect(listener.mock.calls.length).toBe(2);
   });
 });
