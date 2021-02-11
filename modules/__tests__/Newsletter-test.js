@@ -17,53 +17,35 @@ describe('Newsletter', () => {
     expect(listener).toHaveBeenCalledWith(value);
   });
 
-  it('should return unsubcribe function', () => {
+  it('should publish to multiple listeners', () => {
     let { signal, value, listener } = createContext();
 
-    let unsubcribe = signal.subscribe(listener);
-    unsubcribe();
+    let subscriptionA = signal.subscribe(listener);
+    let subscriptionB = signal.subscribe(listener);
+    let subscriptionC = signal.subscribe(listener);
+    let subscriptionD = signal.subscribe(listener);
+    let subscriptionE = signal.subscribe(listener);
+
+    signal.publish(value);
+
+    subscriptionA.dispose();
+    subscriptionE.dispose();
+    subscriptionC.dispose();
+    subscriptionB.dispose();
+    subscriptionD.dispose();
+
+    signal.publish(value);
+
+    expect(listener).toHaveBeenCalledTimes(5);
+  });
+
+  it('should return subscription handler', () => {
+    let { signal, value, listener } = createContext();
+
+    let subscription = signal.subscribe(listener);
+    subscription.dispose();
     signal.publish(value);
 
     expect(listener).not.toHaveBeenCalled();
-  });
-
-  it('should remove callback', () => {
-    let { signal, value, listener } = createContext();
-
-    signal.subscribe(listener);
-    signal.unsubscribe(listener);
-    signal.publish(value);
-
-    expect(listener).not.toHaveBeenCalled();
-  });
-
-  it('should add callback only once', () => {
-    let { signal, value, listener } = createContext();
-
-    signal.subscribe(listener);
-    signal.subscribe(listener);
-    signal.publish(value);
-
-    expect(listener.mock.calls.length).toBe(1);
-  });
-
-  it('should call a callback only once', () => {
-    let { signal, value, listener } = createContext();
-
-    signal.subscribe(listener, { once: true });
-    signal.publish(value);
-    signal.publish(value);
-
-    expect(listener.mock.calls.length).toBe(1);
-  });
-
-  it('should call a callback more than once', () => {
-    let { signal, value, listener } = createContext();
-
-    signal.subscribe(listener, { once: false });
-    signal.publish(value);
-    signal.publish(value);
-
-    expect(listener.mock.calls.length).toBe(2);
   });
 });
