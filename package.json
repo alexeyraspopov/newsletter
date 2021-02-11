@@ -1,6 +1,6 @@
 {
   "name": "newsletter",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "build/bundle.js",
