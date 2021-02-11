@@ -1,12 +1,11 @@
 export class Newsletter {
   constructor() {
-    this.subscribers = new Set();
     this.head = null;
     this.tail = null;
   }
 
   subscribe(callback) {
-    let node = { callback, prev: null, next: null };
+    let node = { value: callback, prev: null, next: null };
 
     if (this.head == null) {
       this.head = node;
@@ -41,7 +40,8 @@ export class Newsletter {
   publish(data) {
     let cursor = this.head;
     while (cursor != null) {
-      cursor.callback.call(null, data);
+      let callback = cursor.value;
+      callback(data);
       cursor = cursor.next;
     }
   }
