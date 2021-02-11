@@ -1,4 +1,4 @@
-export default class Newsletter {
+export class Newsletter {
   constructor() {
     this.subscribers = new Set();
     this.head = null;

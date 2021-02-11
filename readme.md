@@ -15,7 +15,7 @@ To create publisher instance use `Newsletter` constructor (see Usage). Instance 
 
 ```javascript
 // get newsletter
-import Newsletter from 'newsletter';
+import { Newsletter } from 'newsletter';
 
 // create instance
 var signal = new Newsletter();

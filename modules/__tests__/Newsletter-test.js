@@ -1,4 +1,4 @@
-import Newsletter from '../Newsletter';
+import { Newsletter } from '../Newsletter';
 
 function createContext() {
   let signal = new Newsletter();
