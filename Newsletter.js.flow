@@ -1,5 +1,5 @@
 /* @flow */
-declare export default class Newsletter<Data> {
+declare export class Newsletter<Data> {
   subscribe(callback: (Data) => void | Promise<void>): Subscription;
   publish(data: Data): void;
 }
