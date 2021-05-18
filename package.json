@@ -1,12 +1,15 @@
 {
   "name": "newsletter",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
-  "main": "build/bundle.js",
-  "module": "build/module.js",
+  "main": "Newsletter.js",
+  "module": "Newsletter.js",
+  "type": "module",
   "files": [
-    "build/*"
+    "Newsletter.js",
+    "Newsletter.d.ts",
+    "Newsletter.js.flow"
   ],
   "sideEffects": false,
   "repository": "alexeyraspopov/newsletter",
@@ -17,18 +20,12 @@
     "events"
   ],
   "devDependencies": {
-    "@babel/core": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3",
-    "rollup": "^2.38.5",
-    "rollup-plugin-bundle-size": "^1.0.3",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-multi-entry": "^2.1.0"
+    "jest": "^26.6.3"
   },
   "scripts": {
-    "test": "jest",
-    "build": "rollup --config ./rollup.config.js",
-    "prepublish": "npm run build"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "jest": {
+    "transform": {}
   }
 }

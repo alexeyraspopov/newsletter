@@ -1,4 +1,5 @@
-import { Newsletter } from '../Newsletter';
+import { jest } from '@jest/globals';
+import { Newsletter } from './Newsletter';
 
 function createContext() {
   let signal = new Newsletter();
