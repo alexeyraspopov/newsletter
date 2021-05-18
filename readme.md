@@ -4,6 +4,14 @@
 
 Simple pub/sub implementation.
 
+## ESM Package
+
+Starting from `v4.0` this package fully moved to ES Modules and ES2015 code. This means no more build step before publishing to NPM.
+
+Ideally you shouldn't spot any difference, but in case you face any issues, see [this useful article](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#how-can-i-move-my-commonjs-project-to-esm).
+
+You can also downgrade to `v3.x` to use all the same functionality, precompiled to ES5.
+
 ## API
 
 To create publisher instance use `Newsletter` constructor (see Usage). Instance implements next interface:

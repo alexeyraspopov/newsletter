@@ -3,8 +3,9 @@
   "version": "4.0.0",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
-  "main": "Newsletter.js",
-  "module": "Newsletter.js",
+  "main": "./Newsletter.js",
+  "module": "./Newsletter.js",
+  "exports": "./Newsletter.js",
   "type": "module",
   "files": [
     "Newsletter.js",
