@@ -1,48 +1,29 @@
 export class Newsletter {
   constructor() {
-    this.head = null;
-    this.tail = null;
+    this.head = { prev: null, next: null };
+    this.tail = { prev: null, next: null };
+    this.head.next = this.tail;
+    this.tail.prev = this.head;
   }
 
   subscribe(callback) {
-    let node = { value: callback, prev: null, next: null };
-
-    if (this.head == null) {
-      this.head = node;
-      this.tail = node;
-    } else {
-      node.prev = this.tail;
-      this.tail.next = node;
-      this.tail = node;
-    }
+    let node = { value: callback, prev: this.tail.prev, next: this.tail };
+    this.tail.prev.next = node;
+    this.tail.prev = node;
 
     return {
-      dispose: () => {
-        if (node === this.head) {
-          this.head = this.head.next;
-          if (this.head != null) {
-            this.head.prev = null;
-          }
-          if (node === this.tail) {
-            this.tail = null;
-          }
-        } else if (node === this.tail) {
-          this.tail = this.tail.prev;
-          this.tail.next = null;
-        } else {
-          node.prev.next = node.next;
-          node.next.prev = node.prev;
-        }
+      dispose() {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
       },
     };
   }
 
   publish(data) {
     let cursor = this.head;
-    while (cursor != null) {
+    while ((cursor = cursor.next) !== this.tail) {
       let callback = cursor.value;
       callback(data);
-      cursor = cursor.next;
     }
   }
 }
