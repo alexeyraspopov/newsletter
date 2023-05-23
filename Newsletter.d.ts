@@ -1,8 +1,12 @@
+/** Class that creates pub/sub instances */
 export class Newsletter<Data> {
-  subscribe(callback: (Data) => void | Promise<void>): Subscription;
+  /** Adds new listener and return subscription instance */
+  subscribe(callback: (data: Data) => void | Promise<void>): Subscription;
+  /** Invokes all current listeners and send data to them */
   publish(data: Data): void;
 }
 
-class Subscription {
+declare class Subscription {
+  /** Removes listener */
   dispose(): void;
 }

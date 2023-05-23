@@ -1,6 +1,6 @@
 {
   "name": "newsletter",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Simple pub/sub implementation",
   "license": "MIT",
   "main": "./Newsletter.js",
@@ -21,6 +21,6 @@
     "events"
   ],
   "scripts": {
-    "test": "node Newsletter.test.js"
+    "test": "node --test"
   }
 }

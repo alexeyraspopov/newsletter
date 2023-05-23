@@ -1,6 +1,6 @@
 /* @flow */
 declare export class Newsletter<Data> {
-  subscribe(callback: (Data) => void | Promise<void>): Subscription;
+  subscribe(callback: (data: Data) => void | Promise<void>): Subscription;
   publish(data: Data): void;
 }
 
