@@ -59,4 +59,26 @@ signal.publish(13);
 signal.publish(14);
 ```
 
+[`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) API can be used to
+dispose a subscription:
+
+```javascript
+var pubsub = new Newsletter();
+var ctrl = new AbortController();
+
+// subscribe to a single update, pass AbortSignal as second param
+pubsub.subscribe((data) => {
+  console.log(data);
+}, ctrl.signal);
+
+// will call a listener, as expected
+pubsub.publish(13);
+
+// abort controller can be aborted at any occasion
+ctrl.abort();
+
+// no listeners called
+pubsub.publish(14);
+```
+
 The project is licensed under the [MIT](./LICENSE) license.

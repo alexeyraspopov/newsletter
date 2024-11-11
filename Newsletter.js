@@ -5,14 +5,14 @@ export class Newsletter {
     (this.head.next = this.tail).prev = this.head;
   }
 
-  subscribe(callback) {
+  subscribe(callback, signal) {
+    if (signal != null && signal.aborted) return;
     let node = { value: callback, prev: this.tail.prev, next: this.tail };
     this.tail.prev = this.tail.prev.next = node;
-    return {
-      dispose() {
-        (node.prev.next = node.next).prev = node.prev;
-      },
-    };
+    let dispose = () =>
+      node != null ? (((node.prev.next = node.next).prev = node.prev), (node = null)) : null;
+    if (signal != null) signal.addEventListener("abort", dispose, { once: true });
+    return { dispose };
   }
 
   publish(data) {
